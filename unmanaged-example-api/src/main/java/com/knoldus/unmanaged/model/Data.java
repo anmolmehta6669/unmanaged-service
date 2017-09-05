@@ -1,20 +1,26 @@
 package com.knoldus.unmanaged.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Value;
 
 import javax.annotation.concurrent.Immutable;
+import javax.validation.constraints.NotNull;
+import org.pcollections.PVector;
+
+import java.util.Collections;
 
 @Immutable
 @JsonDeserialize
+@Value
+@Builder
+@AllArgsConstructor(onConstructor = @__(@JsonCreator))
 public class Data {
+    @NotNull
     String value1;
-    String value2;
+    @NotNull
+    int value2;
 
-    @JsonCreator
-    Data(@JsonProperty("one") String key1, @JsonProperty("key")String key2) {
-        this.value1 = key1;
-        this.value2 = key2;
-    }
 }
